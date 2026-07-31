@@ -1,0 +1,14 @@
+This PR reorganizes the repository so the Priscila static site is served from the repository root (so it will be available at https://emersonleo.github.io/) instead of the /priscila subpath.
+
+What changed:
+- Moved the development sources and config files into a new codes/ directory (src/, scripts/, package.json, etc.).
+- Moved all files from the priscila/ folder into the repository root (index.html, robots.txt, sitemap-*.xml, _astro/, etc.).
+- Updated codes/astro.config.mjs to use base: "/".
+- Updated sitemap and robots.txt to reference root paths.
+
+Why:
+GitHub Pages serves the repository's site from the repository root for this repository. This change removes the need to visit /priscila and allows the site to be accessed at the root domain.
+
+Notes for reviewers:
+- No content changes to the rendered site besides path updates. Image and asset files were moved; confirm there are no broken references.
+- The changes were made on branch gents/reorganize-github-pages-structure and pushed to origin.

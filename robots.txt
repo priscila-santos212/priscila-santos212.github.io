@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Robots: site hospedado na raiz do domínio (emersonleo.github.io).
+# Este arquivo é válido quando o site estiver na raiz do domínio.
+# Se usar domínio próprio, substitua a URL abaixo pelo seu domínio (ex: https://seu-dominio.com.br/sitemap-index.xml).
+Sitemap: https://emersonleo.github.io/sitemap-index.xml

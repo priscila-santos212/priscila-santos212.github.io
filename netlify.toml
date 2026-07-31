@@ -1,7 +1,0 @@
-# Deploy do site estático (Astro) na Netlify.
-[build]
-  command = "npm run build"
-  publish = "dist"
-
-[build.environment]
-  NODE_VERSION = "20"
