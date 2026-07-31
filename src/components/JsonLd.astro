@@ -1,0 +1,88 @@
+---
+/**
+ * Dados estruturados (Schema.org / JSON-LD) para SEO.
+ * Gera: Psychologist (negócio) + Person (Priscila) + FAQPage.
+ * Todos os dados vêm de src/data/site.ts.
+ */
+import { profile, contact, seo, faq } from "../data/site";
+
+const siteUrl = seo.siteUrl.replace(/\/$/, "");
+const ogImageUrl = `${siteUrl}${seo.ogImage}`;
+
+// Redes sociais (sameAs) — só inclui as que existem.
+const sameAs = [contact.linkedin, contact.instagram].filter(Boolean);
+
+const psychologist = {
+  "@context": "https://schema.org",
+  "@type": "Psychologist",
+  "@id": `${siteUrl}/#business`,
+  name: profile.name,
+  description: seo.description,
+  url: `${siteUrl}/`,
+  image: ogImageUrl,
+  telephone: `+${contact.whatsappNumber}`,
+  email: contact.email,
+  priceRange: "$$",
+  areaServed: [
+    { "@type": "Country", name: "Brasil" },
+    { "@type": "AdministrativeArea", name: "Atendimento online (todo o Brasil e exterior)" },
+  ],
+  availableLanguage: ["pt-BR", "en"],
+  knowsLanguage: ["Português", "Inglês"],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Recife",
+    addressRegion: "PE",
+    addressCountry: "BR",
+  },
+  knowsAbout: [
+    "Gestalt-terapia",
+    "Psicologia transcultural",
+    "Processos migratórios",
+    "Ansiedade",
+    "Depressão",
+    "Luto",
+    "Autoestima",
+    "Questões raciais",
+    "Doenças crônicas",
+  ],
+  ...(sameAs.length ? { sameAs } : {}),
+  founder: { "@id": `${siteUrl}/#priscila` },
+};
+
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${siteUrl}/#priscila`,
+  name: profile.name,
+  jobTitle: "Psicóloga clínica",
+  description: seo.description,
+  image: ogImageUrl,
+  url: `${siteUrl}/`,
+  knowsLanguage: ["Português", "Inglês"],
+  ...(sameAs.length ? { sameAs } : {}),
+  identifier: {
+    "@type": "PropertyValue",
+    propertyID: "CRP",
+    value: profile.crp,
+  },
+};
+
+const faqPage = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.items.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+
+const graph = [psychologist, person, faqPage];
+---
+
+{
+  graph.map((node) => (
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(node)} />
+  ))
+}

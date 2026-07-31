@@ -1,0 +1,31 @@
+---
+/** Faixa larga (imagem horizontal) com uma frase — quebra de seção. */
+import { Picture } from "astro:assets";
+import bandImg from "../assets/priscila-trabalhando-horizontal.jpg";
+---
+
+<section class="relative isolate my-4 overflow-hidden" aria-label="Momento de trabalho">
+  <Picture
+    src={bandImg}
+    alt="Priscila Santos, de perfil, durante um atendimento online em ambiente acolhedor"
+    widths={[768, 1280, 1600, 1920]}
+    sizes="100vw"
+    formats={["avif", "webp"]}
+    fallbackFormat="jpg"
+    pictureAttributes={{ class: "block h-[42vh] min-h-[280px] w-full sm:h-[48vh]" }}
+    class="h-full w-full object-cover object-center"
+    loading="lazy"
+  />
+  <!-- Sobreposição para contraste do texto -->
+  <div class="absolute inset-0 -z-0 bg-gradient-to-r from-forest/80 via-forest/45 to-forest/10" aria-hidden="true"></div>
+
+  <div class="absolute inset-0 flex items-center">
+    <div class="container-site">
+      <blockquote class="max-w-xl reveal">
+        <p class="font-serif text-2xl leading-snug text-cream sm:text-3xl md:text-4xl">
+          “Um cuidado que considera a pessoa para além do sintoma.”
+        </p>
+      </blockquote>
+    </div>
+  </div>
+</section>

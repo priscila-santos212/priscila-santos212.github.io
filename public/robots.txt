@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# DEMO no GitHub Pages (subcaminho /priscila).
+# Obs.: em subcaminho, crawlers leem o robots.txt da RAIZ do domínio, não este.
+# Ao migrar para o domínio próprio (na raiz), este arquivo passa a valer.
+# ⚠️ [PREENCHER] Ao usar domínio próprio: https://seu-dominio.com.br/sitemap-index.xml
+Sitemap: https://emersonleo.github.io/priscila/sitemap-index.xml

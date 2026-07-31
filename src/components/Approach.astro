@@ -1,0 +1,50 @@
+---
+/** Abordagem / Como eu trabalho (Gestalt-terapia). */
+import { Picture } from "astro:assets";
+import { approach } from "../data/site";
+import approachImg from "../assets/priscila-reflexiva.jpg";
+---
+
+<section id="abordagem" class="scroll-mt-24 bg-mist/50 py-section">
+  <div class="container-site">
+    <div class="grid items-start gap-10 lg:grid-cols-[1fr_0.8fr] lg:gap-16">
+      <!-- Texto -->
+      <div class="reveal">
+        <p class="eyebrow mb-3">{approach.eyebrow}</p>
+        <h2 class="text-h2">{approach.title}</h2>
+        <div class="mt-6 space-y-5 text-lg leading-relaxed text-graphite/85">
+          {approach.paragraphs.map((p) => <p>{p}</p>)}
+        </div>
+      </div>
+
+      <!-- Imagem -->
+      <div class="reveal">
+        <div class="mx-auto max-w-xs sm:max-w-sm">
+          <Picture
+            src={approachImg}
+            alt={approach.imageAlt}
+            widths={[360, 540, 720]}
+            sizes="(min-width: 1024px) 32vw, 70vw"
+            formats={["avif", "webp"]}
+            fallbackFormat="jpg"
+            pictureAttributes={{ class: "block" }}
+            class="w-full rounded-3xl object-cover shadow-soft"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Pilares -->
+    <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        approach.pillars.map((pillar) => (
+          <li class="reveal rounded-2xl border border-stone bg-cream p-6 shadow-card">
+            <h3 class="text-h3 font-serif text-forest">{pillar.title}</h3>
+            <p class="mt-2 text-graphite/80">{pillar.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
