@@ -1,0 +1,32 @@
+---
+/** Você se identifica? — auto-identificação do público ideal. */
+import { audience } from "../data/site";
+---
+
+<section id="publico" class="scroll-mt-24 bg-mist/50 py-section">
+  <div class="container-site">
+    <div class="max-w-reading reveal">
+      <p class="eyebrow mb-3">{audience.eyebrow}</p>
+      <h2 class="text-h2">{audience.title}</h2>
+      <p class="mt-4 text-lg text-graphite/80">{audience.intro}</p>
+    </div>
+
+    <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+      {
+        audience.items.map((item) => (
+          <li class="reveal flex items-start gap-3 rounded-2xl bg-cream p-5 shadow-card">
+            <span
+              class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-sage/20 text-sage-deep"
+              aria-hidden="true"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12l5 5L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="text-graphite/90">{item}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

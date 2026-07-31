@@ -1,0 +1,39 @@
+---
+/** Layout enxuto para páginas legais (Privacidade, Termos). */
+import BaseLayout from "./BaseLayout.astro";
+import Footer from "../components/Footer.astro";
+import { profile, legal } from "../data/site";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description } = Astro.props;
+const home = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+---
+
+<BaseLayout title={`${title} · ${profile.name}`} description={description}>
+  <header class="border-b border-stone bg-cream/90 backdrop-blur">
+    <div class="container-site flex items-center justify-between gap-4 py-4">
+      <a href={home} class="flex flex-col leading-tight" aria-label={`${profile.name} — voltar ao início`}>
+        <span class="font-serif text-lg font-semibold text-forest">{profile.name}</span>
+        <span class="text-[0.7rem] uppercase tracking-[0.1em] text-graphite/70">{profile.crp}</span>
+      </a>
+      <a href={home} class="text-sm font-medium text-sage-deep transition-colors hover:text-forest">
+        ← Voltar ao site
+      </a>
+    </div>
+  </header>
+
+  <main id="conteudo" class="py-section">
+    <article class="container-site max-w-reading">
+      <h1 class="text-h2">{title}</h1>
+      <p class="mt-2 text-sm text-graphite/60">Última atualização: {legal.updatedAt}</p>
+      <div class="legal-prose mt-8 space-y-5 text-graphite/85">
+        <slot />
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</BaseLayout>

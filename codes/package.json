@@ -1,0 +1,34 @@
+{
+  "name": "priscila-santos-psicologa",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site institucional da psicóloga Priscila Santos (CRP 02/29363) — Astro + Tailwind + TypeScript.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "make:og": "node scripts/make-og.mjs",
+    "deploy:pages": "astro build && node scripts/copy-to-pages.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/tailwind": "^6.0.2",
+    "@fontsource-variable/fraunces": "^5.1.1",
+    "@fontsource-variable/inter": "^5.1.1",
+    "astro": "^5.6.1",
+    "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.9.3"
+  },
+  "allowScripts": {
+    "esbuild@0.27.7": true,
+    "esbuild@0.25.12": true,
+    "sharp@0.34.5": true
+  }
+}
